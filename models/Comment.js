@@ -5,6 +5,7 @@ const ObjectId = Schema.Types.ObjectId;
 
 var commentSchema = Schema( {
     userId: ObjectId,
+    courseID: ObjectId,
     rating: Number,
     comment:String,
     completed: Boolean,

@@ -1,33 +1,16 @@
-<div class="">
-    <% for (course of courses){%>
-        <div class="bg-light m-5 p-2 border border-primary border-2">
-            <br> 
-                <%= course['subject'] %>
-                <%= course.coursenum %>
-                <strong><%= course.name %></strong>
-                <%= course.term %>
-                <div class="mb-1">
-                    <%=course.instructor[0] %>
-                    <%=course.instructor[1] %>
-                    (<%=course.instructor[2] %>)
-                </div>
-                <div><a href="/schedule/remove/<%= course._id %>">(delete from schedule)</a></div>
-                <div class="mb-1">
-                    Enrollment: <%=course.enrolled %>,
-                    Limit: <%=course.limit || 999 %>,
-                    Waitlist: <%= course.waiting %>
-                    <br>
-                    Times: <%= course.strTimes %>
-                 </div>
-                 <div class="">
-                    <em><%=course.details %></em>
-                </div>
-            </br>
-        </div>  
-    <% } %>
-    <form method="post" action="/comment/add">
-        title:<input type="text" name="title"><br>
-        description:<input type="text" name="description"><br>
-        <input type="submit" value="Save Item"><br>
-    </form>
-</div>
+<li>
+    <%= ratingContent %> 
+    <%= commentText %> 
+</li>
+
+<!-- <div class="">
+    <span>
+        <%= course.subject %> 
+        <%= course.coursenum %> 
+        <%= course.term %> 
+    </span>
+    <strong><%= course.name %></strong>
+    
+</div> -->
+
+

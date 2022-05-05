@@ -183,7 +183,16 @@ app.get('/todo',
       next(e);
     }
   }
-)
+  )
+
+/*************** *
+ Comment Page
+********************/
+
+  app.get("/comment", (req, res, next) => {
+    res.render("comment");
+  });
+
 
 /* ************************
   Functions needed for the course finder routes
@@ -391,13 +400,16 @@ app.post('/schedule/addComment',
   isLoggedIn,
   async (req,res,next) => {
     try{
-      const {rating,comment} = req.body; // get title and description from the body
+      const {ratingContent,commentText} = req.body; // get title and description from the body
       const userId = res.locals.user._id; // get the user's id
       const createdAt = new Date(); // get the current date/time
-      let data = {rating, comment, userId, createdAt,} // create the data object
-      let item = new Comment(data) // create the database object (and test the types are correct)
-      await item.save() // save the todo item in the database
-      res.redirect('/schedule')  // go back to the todo page
+      //let data = {rating, comment, userId, createdAt,} // create the data object
+      //let item = new Comment(data) // create the database object (and test the types are correct)
+      //await item.save() // save the comment item in the database
+      res.locals.ratingContent=ratingContent;
+      res.locals.commentText=commentText;
+      res.render('comment')
+      //res.redirect('/schedule')  // go back to the schedule page
     } catch (e){
       next(e);
     }
