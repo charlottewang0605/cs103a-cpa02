@@ -1,0 +1,18 @@
+<div>
+    <a href="/commentlist/order">(Sort in Rating Descending Order)</a>
+</div>
+<div>
+    <a href="/commentlist">(Back to Original Order)</a>
+</div>
+
+<ol>
+    <% for (item of items){%>
+        <li class="mb-2">
+            Course:<%= item.courseText%><br>
+            Course ID:<%= item.courseId%><br>
+            Rating:<%= item.rating%><br>
+            Text:<%= item.comment%> 
+        </li>
+    <% }%>
+</ol>
+

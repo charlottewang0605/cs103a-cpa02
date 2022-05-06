@@ -21,7 +21,7 @@ const axios = require("axios")
 const ToDoItem = require("./models/ToDoItem")
 const Course = require('./models/Course')
 const Schedule = require('./models/Schedule')
-
+const Comment = require('./models/Comment')
 // *********************************************************** //
 //  Loading JSON datasets
 // *********************************************************** //
@@ -185,13 +185,6 @@ app.get('/todo',
   }
   )
 
-/*************** *
- Comment Page
-********************/
-
-  app.get("/comment", (req, res, next) => {
-    res.render("comment");
-  });
 
 
 /* ************************
@@ -396,25 +389,58 @@ app.get('/schedule/remove/:courseId',
   }
 )
 
-app.post('/schedule/addComment',
+
+
+  app.post('/schedule/addComment/:courseId',
   isLoggedIn,
   async (req,res,next) => {
     try{
-      const {ratingContent,commentText} = req.body; // get title and description from the body
-      const userId = res.locals.user._id; // get the user's id
-      const createdAt = new Date(); // get the current date/time
-      //let data = {rating, comment, userId, createdAt,} // create the data object
-      //let item = new Comment(data) // create the database object (and test the types are correct)
-      //await item.save() // save the comment item in the database
-      res.locals.ratingContent=ratingContent;
-      res.locals.commentText=commentText;
-      res.render('comment')
-      //res.redirect('/schedule')  // go back to the schedule page
+      const courseId = req.params.courseId
+      const course= await Course.findOne({_id:courseId});
+      const courseText=course.name;
+      const {ratingContent,commentText} = req.body; 
+      const userId = res.locals.user._id; 
+      let data = {rating:ratingContent, comment:commentText,userId,courseId,courseText} 
+      let item = new Comment(data)
+      await item.save()
+      res.locals.items= await Comment.find({userId:userId});
+      res.render('commentlist')
     } catch (e){
       next(e);
     }
   }
   )
+
+
+
+app.get('/commentlist',
+  isLoggedIn,   // redirect to /login if user is not logged in
+  async (req,res,next) => {
+    try{
+      let userId = res.locals.user._id;  // get the user's id
+      res.locals.items= await Comment.find({userId:userId}); // lookup the user's todo items
+      res.render("commentlist");  // render to the toDo page
+    } catch (e){
+      next(e);
+    }
+  }
+  )
+
+
+app.get('/commentlist/order',
+// remove a course from the user's schedule
+  isLoggedIn,
+  async (req,res,next) => {
+    try{
+      let userId = res.locals.user._id;  // get the user's id
+      res.locals.items= await Comment.find({userId:userId}).sort({rating:-1}); // lookup the user's todo items
+      res.render("commentlist")
+    } catch (e){
+      next(e);
+    }
+  }
+  )
+
 
 // here we catch 404 errors and forward to error handler
 app.use(function(req, res, next) {
