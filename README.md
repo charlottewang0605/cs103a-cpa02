@@ -9,6 +9,9 @@ You can also search courses by subject or instructor.
 ![image]
 (https://user-images.githubusercontent.com/64769717/167243862-52dee450-7faa-4e06-84a3-2ca11571172f.png)
 
+Commentlist after delete
+<img width="785" alt="image" src="https://user-images.githubusercontent.com/64769717/167244336-1299ba67-e29a-4373-9869-644749b199ee.png">
+
 
 
 It allows users to add rating and comments to the courses in their schedule.
