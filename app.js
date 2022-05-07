@@ -448,7 +448,7 @@ app.get('/commentlist/order',
     try{
       const itemId=req.params.itemId; // get the id of the item to delete
       await Comment.deleteOne({_id:itemId}) // remove that comment from the database
-      res.redirect('/commentlist') // go back to the commentlist page
+      res.redirect('/commentlist') // go back to the commentlist 
     } catch (e){
       next(e);
     }
