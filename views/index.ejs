@@ -1,16 +1,16 @@
 
 
-    <div class="jumbotron">
-        <h1>PA03: Course Finder Fall20-Spr21 </h1>
-        <p></p>
+    <div class="jumbotron d-flex flex-row">
+        <h1>
+        CPA02: Course Finder Fall20-Spr21
+        </h1>
     </div>
 
     <p class="p-3 m-3 border border-primary bg-light">
-        The goal of this assignment is to write an app that will let
-        students pick their courses for the year. Since we don't have 
-        the data for this year (due to workday issues), we will use the 
-        2020-2021 Academic year data. You must signup or login to see
-        the courses and create your schedule.
+        This app let students pick their courses for 2021-2021 Academic Year.<br>
+        You can also add ratings and comments to the courses.<br>
+        You must signup or login to see
+        the courses, create your schedule and add your comments.
     </p>
     
     <% if (true || loggedIn) {%>  
@@ -31,7 +31,7 @@
         <form method="post" action="/courses/byName">
             Show Courses by Keyword:
               <input type="text" name="name"
-                     placeholder="e.g. MATH">
+                     placeholder="e.g. Python">
             <input type="submit">
         </form>
         <br>

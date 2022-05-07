@@ -441,6 +441,19 @@ app.get('/commentlist/order',
   }
   )
 
+  app.get("/commentlist/delete/:itemId",
+  isLoggedIn,
+  async (req,res,next) => {
+    try{
+      const itemId=req.params.itemId; // get the id of the item to delete
+      await Comment.deleteOne({_id:itemId}) // remove that item from the database
+      res.redirect('/commentlist') // go back to the todo page
+    } catch (e){
+      next(e);
+    }
+  }
+)
+
 
 // here we catch 404 errors and forward to error handler
 app.use(function(req, res, next) {

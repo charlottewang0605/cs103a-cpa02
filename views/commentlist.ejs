@@ -1,17 +1,18 @@
-<div>
-    <a href="/commentlist/order">(Sort in Rating Descending Order)</a>
-</div>
-<div>
+<div class="d-flex flex-row">
+<img src="/images/Comment.jpg" alt="brandeisheader" width="15%">
+<div class="m-5">
+    <a href="/commentlist/order">(Sort in Rating Descending Order)</a><hr>
     <a href="/commentlist">(Back to Original Order)</a>
+</div>
 </div>
 
 <ol>
     <% for (item of items){%>
-        <li class="mb-2">
+        <li class="bg-warning w-50 m-3 p-2 border border-primary border-3">
             Course:<%= item.courseText%><br>
-            Course ID:<%= item.courseId%><br>
             Rating:<%= item.rating%><br>
-            Text:<%= item.comment%> 
+            Comment:<%= item.comment%><br>
+            <a href="/commentlist/delete/<%= item._id%>" class="btn btn-secondary active" role="button" aria-pressed="true">Delete</a>
         </li>
     <% }%>
 </ol>
