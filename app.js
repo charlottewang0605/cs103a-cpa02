@@ -419,8 +419,8 @@ app.get('/commentlist',
   async (req,res,next) => {
     try{
       let userId = res.locals.user._id;  // get the user's id
-      res.locals.items= await Comment.find({userId:userId}); // lookup the user's todo items
-      res.render("commentlist");  // render to the toDo page
+      res.locals.items= await Comment.find({userId:userId}); // lookup the user's comment items
+      res.render("commentlist");  // render to the commentlist page
     } catch (e){
       next(e);
     }
@@ -429,12 +429,12 @@ app.get('/commentlist',
 
 
 app.get('/commentlist/order',
-// remove a course from the user's schedule
+// sort a comment list by rating order
   isLoggedIn,
   async (req,res,next) => {
     try{
       let userId = res.locals.user._id;  // get the user's id
-      res.locals.items= await Comment.find({userId:userId}).sort({rating:-1}); // lookup the user's todo items
+      res.locals.items= await Comment.find({userId:userId}).sort({rating:-1}); // lookup and sort
       res.render("commentlist")
     } catch (e){
       next(e);
@@ -448,7 +448,7 @@ app.get('/commentlist/order',
     try{
       const itemId=req.params.itemId; // get the id of the item to delete
       await Comment.deleteOne({_id:itemId}) // remove that item from the database
-      res.redirect('/commentlist') // go back to the todo page
+      res.redirect('/commentlist') // go back to the commentlist page
     } catch (e){
       next(e);
     }
