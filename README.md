@@ -5,7 +5,7 @@ It allows users to select courses, make schedule, rate and comment on the select
 
 First, you need to signup and login as usual.
 
-Then, you can do search by course name feature, just type in the keyword in the course name.
+Then, you can do search by course name feature, just type in the keyword in the course name.<br>
 You can also search courses by subject or instructor.
 <img width="500" alt="image" src="https://user-images.githubusercontent.com/64769717/167244382-65c0b3ec-40f9-49ab-9596-1effe569c7a3.png">
 
@@ -20,7 +20,7 @@ All comments would be presented in the comment list after clicking Comment at th
 You can choose to sort by rating from highest to lowest by clicking Sort in Rating Descending Order.
 <img width="500" alt="image" src="https://user-images.githubusercontent.com/64769717/167244823-426b2eca-482b-493f-8f33-4cfbf1282bf7.png">
 
-You can also delete the comment by clicking Delete button.
+You can also delete the comment by clicking Delete button.<br>
 <img width="500" alt="image" src="https://user-images.githubusercontent.com/64769717/167244876-b1a81a2e-45d2-49a8-adda-0e7cc7daa645.png">
 
 
